@@ -10,15 +10,15 @@ It accomplishes this by copying the items of the deceased into a fake container 
 ## Roadmap
 
 - [x] Tag loot as stolen
-- [ ] QuickLoot Support 
+- [x] QuickLoot Support 
     - [x] Tag stolen in inventory menu
-    - [ ] Tag stolen in QuickLoot menu
+    - [x] Tag stolen in QuickLoot menu
 - [ ] Customizable categories
-    - [ ] Civilian
+    - [x] Civilian
         * Citizens and Hunters
-    - [ ] Outlaw
+    - [x] Outlaw
         * Bandits, Forsworn, Hagravens, Warlocks and Afflicted
-    - [ ] Outcast
+    - [x] Outcast
         * Vampires and Werewolves
         * Vampire Thrall (?)
     - [ ] Undead
@@ -42,11 +42,11 @@ It accomplishes this by copying the items of the deceased into a fake container 
     - [ ] Silver Hand
     - [ ] Alik'r
 - [ ] Ruleset
-    - [ ] Disable
+    - [x] Disable
     - [ ] Ally only
     - [ ] Enemy only
     - [ ] Last hit
-    - [ ] Always
+    - [x] Always
 - [ ] MCM
 
 ## Alternatives
