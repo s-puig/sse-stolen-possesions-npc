@@ -10,6 +10,7 @@ Form Property SP_NPC_Empty Auto
 ObjectReference deadBody
 
 Event OnInit()
+    Debug.Notification("MimicInit?")
     deadBody = Alias_DeadBody.GetReference()
     AddInventoryEventFilter(SP_NPC_Empty);
     GetReference().RemoveAllItems(None, false, true)

@@ -21,7 +21,7 @@ It accomplishes this by copying the items of the deceased into a fake container 
     - [x] Outcast
         * Vampires and Werewolves
         * Vampire Thrall (?)
-    - [ ] Undead
+    - [x] Undead
         * Draugr, Skeleton and Ghosts
     - [ ] Dragon cult
         * Dragons and dragon priests
@@ -37,16 +37,23 @@ It accomplishes this by copying the items of the deceased into a fake container 
         * Slaughterfish, Ice Wraith, Spriggan, Troll, Wisp, Wispmother, Falmer and Giants
     - [ ] Dwarven automaton
         * Spider, Sphere and Centurion
-    - [ ] Civil War
-    - [ ] Thalmor
-    - [ ] Silver Hand
-    - [ ] Alik'r
+    - [ ] Factions
+        - [ ] Civil War
+        - [ ] Companions
+        - [ ] Thieves Guild
+        - [ ] Winterhold
+        - [ ] Dark Brotherhood
+        - [ ] Thalmor
+        - [ ] Silver Hand
+        - [ ] Volkihar
+        - [ ] Dawnguard
+        - [ ] Alik'r
 - [ ] Ruleset
-    - [x] Disable
-    - [ ] Ally only
-    - [ ] Enemy only
-    - [ ] Last hit
-    - [x] Always
+    - [ ] Enable/Disable
+    - [ ] Allow friends
+    - [ ] Allow followers
+    - [ ] Allow members(?)
+    - [ ] Allow killed
 - [ ] MCM
 
 ## Alternatives
