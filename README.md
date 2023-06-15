@@ -17,26 +17,30 @@ It accomplishes this by copying the items of the deceased into a fake container 
     - [x] Civilian
         * Citizens and Hunters
     - [x] Outlaw
-        * Bandits, Forsworn, Hagravens, Warlocks and Afflicted
+        * Bandits, Forsworn, Hagravens, Warlocks,Reavers
     - [x] Outcast
-        * Vampires and Werewolves
+        * Vampires, Werewolves, Afflicted, Werebears
         * Vampire Thrall (?)
     - [x] Undead
-        * Draugr, Skeleton and Ghosts
-    - [ ] Dragon cult
+        * Draugr, Skeleton and Ghosts, Ash Spawn
+    - [x] Dragon cult
         * Dragons and dragon priests
-    - [ ] Daedra
+    - [x] Daedra
         * Atronachs and Dremora
-    - [ ] Predator
-        * Wolf, Bear, Sabrecat, Chaurus, Spider, Skeever
-    - [ ] Domestic animals
+        * Lurkers and Seekers (?)
+        * Ash Guardian (?)
+    - [x] Predator
+        * Wolf, Bear, Sabrecat, Chaurus, Spider, Skeever, Slaughterfish, Ash Hopper
+    - [x] Domestic animals
         * Cow, Chicken, Dog, Goat, Horse
-    - [ ] Wild Game
+    - [x] Wild Game
         * Mudcrab, Elk, Deer, Horker, Mammoth, Rabbit, Fox
+        Cant find rabbit
     - [ ] Wild creature
-        * Slaughterfish, Ice Wraith, Spriggan, Troll, Wisp, Wispmother, Falmer and Giants
+        * Ice Wraith, Spriggan, Troll, Wisp, Wispmother, Falmer and Giants
     - [ ] Dwarven automaton
         * Spider, Sphere and Centurion
+        * ballista (?)
     - [ ] Factions
         - [ ] Civil War
         - [ ] Companions

@@ -14,7 +14,7 @@ Event OnDeath(Actor killer)
     TagActor()
 EndEvent
 
-;This is a band-aid for checking the conditions but the alternative is a massive (and slow) amount of condition checks in Papyrus that would easily break
+;This is a band-aid for checking the conditions but the alternative is a massive (slow and fragile) amount of condition checks in Papyrus that would easily break
 Event OnUpdate()
    TagActor()
 EndEvent
@@ -22,6 +22,7 @@ EndEvent
 Function TagActor()
     Actor target = GetTargetActor()
     ;Send a SM to check if it should be tagged
+    ;Checking if the quest is stopped here doesn't work. If we get multiple kills at the same frame, they all will see the quest not running but only one will start
     If (SP_NPC_CorpseEvent.SendStoryEventAndWait(target.GetCurrentLocation(), target, GetCasterActor(), 0))
         target.SetFactionOwner(SP_NPC_CrimeFaction)
     ;SM might fail because the quest was activating or running for another actor e.g. A mass killing

@@ -10,6 +10,8 @@ ReferenceAlias Property Alias_FakeContainer Auto
 Event OnStoryScript(Keyword _keyword, Location _location, ObjectReference victim, ObjectReference looter, int _int, int _int2)
     ;Block activation to stop other scripts or behaviours from interacting
     Alias_DeadBody.GetReference().BlockActivation(true)
+    ;Startup the container
+    (Alias_FakeContainer as SP_NPC_MimicInventory).Startup()
     ;TODO: Experiment with followers and how they behave to see if this is necessary
     ;Activate the fake container
     Alias_FakeContainer.GetReference().Activate(looter)

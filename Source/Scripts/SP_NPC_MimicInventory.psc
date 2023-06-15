@@ -4,13 +4,12 @@ It does this by making a copy of the items to itself and sync item exchanges
 In this case, because we want the items to appear with a steal tag, we set this Object Reference with a faction owner}
 
 ReferenceAlias Property Alias_DeadBody Auto
-ReferenceAlias Property Alias_Player Auto
 Form Property SP_NPC_Empty Auto
 
 ObjectReference deadBody
+ObjectReference player
 
-Event OnInit()
-    Debug.Notification("MimicInit?")
+Function Startup()
     deadBody = Alias_DeadBody.GetReference()
     AddInventoryEventFilter(SP_NPC_Empty);
     GetReference().RemoveAllItems(None, false, true)
@@ -23,16 +22,17 @@ Event OnInit()
         index += 1
     EndWhile
     RemoveInventoryEventFilter(SP_NPC_Empty)
-endEvent
+    player = Game.GetPlayer()
+endFunction
 
 Event OnItemAdded(Form akBaseItem, int aiItemCount, ObjectReference akItemReference, ObjectReference akSourceContainer)
-    if akSourceContainer == Alias_Player.GetReference()
+    if akSourceContainer == player as ObjectReference
         deadBody.AddItem(akBaseItem, aiItemCount, true)
     endIf
 EndEvent
 
 Event OnItemRemoved(Form akBaseItem, int aiItemCount, ObjectReference akItemReference, ObjectReference akDestContainer)
-    if akDestContainer == Alias_Player.GetReference()
+    if akDestContainer == player as ObjectReference
         deadBody.RemoveItem(akBaseItem, aiItemCount, true, None)
     endIf
 EndEvent
