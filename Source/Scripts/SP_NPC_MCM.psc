@@ -64,6 +64,9 @@ Event OnPageReset(string pageName)
         ;Bandits
         AddHeaderOption("Outlaws")
         AddToggleOptionST("OUTLAW_ENABLE", "Enable", SP_NPC_Outlaw.GetValueInt())
+        ;Undead
+        AddHeaderOption("Undead")
+        AddToggleOptionST("UNDEAD_ENABLE", "Enable", SP_NPC_Undead.GetValueInt())
         SetCursorPosition(1)
         ;Supernatural
         AddHeaderOption("Outcasts")
@@ -182,6 +185,23 @@ State OUTLAW_ENABLE
 
     event OnHighlightST()
         SetInfoText("Includes bandits, forsworn, hagraven, warlocks and reavers.")
+    endEvent
+EndState
+
+State UNDEAD_ENABLE
+    event OnSelectST()
+        bool newValue = !SP_NPC_Undead.GetValueInt() as bool
+        SP_NPC_Undead.SetValueInt(newValue as int)
+        SetToggleOptionValueST(newValue)
+    endEvent
+
+    event OnDefaultST()
+        SetToggleOptionValueST(false)
+        SP_NPC_Undead.SetValueInt(0)
+    endEvent
+
+    event OnHighlightST()
+        SetInfoText("Includes draugr, skeletons, ghosts and ash spawns.")
     endEvent
 EndState
 
