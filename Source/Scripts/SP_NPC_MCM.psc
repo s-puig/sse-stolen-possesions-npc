@@ -31,6 +31,12 @@ string PAGE_HUMANOID = "Humanoids"
 string PAGE_FACTION = "Factions"
 string PAGE_CREATURE = "Creatures"
 
+bool enableMod = true
+
+int function GetVersion()
+	return 1
+endfunction
+
 Event OnConfigInit()
     Pages = new string[4]    
     Pages[0] = PAGE_GENERAL
@@ -44,7 +50,7 @@ Event OnPageReset(string pageName)
     If (pageName == PAGE_GENERAL)
         AddHeaderOption("General")
         ;Enable mod
-        AddToggleOptionST("MOD_ENABLE", "Enable", SP_NPC_Bootstrap.IsRunning())
+        AddToggleOptionST("MOD_ENABLE", "Enable", enableMod)
         ;Preset selection
         ;TODO!()
         ;QuickLoot support
@@ -58,6 +64,7 @@ Event OnPageReset(string pageName)
         ;Bandits
         AddHeaderOption("Outlaws")
         AddToggleOptionST("OUTLAW_ENABLE", "Enable", SP_NPC_Outlaw.GetValueInt())
+        SetCursorPosition(1)
         ;Supernatural
         AddHeaderOption("Outcasts")
         AddToggleOptionST("OUTCAST_ENABLE", "Enable", SP_NPC_Outcast.GetValueInt())
@@ -72,6 +79,7 @@ Event OnPageReset(string pageName)
         AddToggleOptionST("DOMESTIC_ENABLE", "Enable", SP_NPC_Domestic.GetValueInt())
         AddHeaderOption("Game animals")
         AddToggleOptionST("HUNT_ENABLE", "Enable", SP_NPC_Hunt.GetValueInt())
+        SetCursorPosition(1)
         AddHeaderOption("Wild predators")
         AddToggleOptionST("PREDATOR_ENABLE", "Enable", SP_NPC_Predator.GetValueInt())
         AddHeaderOption("Wild creatures")
@@ -100,9 +108,31 @@ Event OnPageReset(string pageName)
         AddHeaderOption("Dawnguard")
         AddToggleOptionST("DAWNGUARD_ENABLE", "Enable", SP_NPC_Dawnguard.GetValueInt())
     EndIf
-
-
 EndEvent
+
+State MOD_ENABLE
+    event OnSelectST()
+        enableMod = !enableMod
+
+        If (enableMod)
+            SP_NPC_Bootstrap.Start()
+        Else
+            SP_NPC_Bootstrap.Stop()
+        EndIf
+
+        ;SetOptionFlags..
+        ;TODO!()
+        SetToggleOptionValueST(enableMod)
+    endEvent
+
+    event OnDefaultST()
+        SetToggleOptionValueST(true)
+    endEvent
+
+    event OnHighlightST()
+        SetInfoText("Controls the mod functionality. If you want to uninstall, uncheck and wait for atleast an hour.")
+    endEvent
+EndState
 
 State QUICKLOOT_ENABLE
     event OnSelectST()
@@ -118,30 +148,6 @@ State QUICKLOOT_ENABLE
 
     event OnHighlightST()
         SetInfoText("Experimental support for QuickLoot. BEWARE! THIS IS EXPERIMENTAL AND HAS NOT BEEN TESTED ENOUGH. NOT RESPONSIBLE IF YOUR SAVE BREAKS")
-    endEvent
-EndState
-
-State MOD_ENABLE
-    event OnSelectST()
-        bool newValue = !SP_NPC_Bootstrap.IsRunning()
-
-        If (newValue)
-            SP_NPC_Bootstrap.Start()
-        Else
-            SP_NPC_Bootstrap.Stop()
-        EndIf
-
-        ;SetOptionFlags..
-        ;TODO!()
-        SetToggleOptionValueST(newValue)
-    endEvent
-
-    event OnDefaultST()
-        SetToggleOptionValueST(true)
-    endEvent
-
-    event OnHighlightST()
-        SetInfoText("Controls the mod functionality. If you want to uninstall, uncheck and wait for atleast an hour.")
     endEvent
 EndState
 
