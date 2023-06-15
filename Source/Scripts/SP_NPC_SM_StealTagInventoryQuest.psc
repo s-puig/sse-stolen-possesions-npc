@@ -21,6 +21,7 @@ EndEvent
 Event OnMenuClose(string menuName)
     ;Not sure if it's necessary since it dies, but doesn't hurt to be sure
     UnregisterForMenu("ContainerMenu")
+    (Alias_FakeContainer as SP_NPC_MimicInventory).Shutdown()
     ;Return block activation to default behaviour and stop the quest
     Alias_DeadBody.GetReference().BlockActivation(false)
     Stop()
