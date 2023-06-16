@@ -22,6 +22,8 @@ Event OnMenuClose(string menuName)
     ;Not sure if it's necessary since it dies, but doesn't hurt to be sure
     UnregisterForMenu("ContainerMenu")
     (Alias_FakeContainer as SP_NPC_MimicInventory).Shutdown()
+    ;FIXME: This wait is a band-aid when taking all items (with LOTS of items!). Quest closes before processing all items and becomes a dupe exploit
+    Utility.Wait(1)
     ;Return block activation to default behaviour and stop the quest
     Alias_DeadBody.GetReference().BlockActivation(false)
     Stop()
