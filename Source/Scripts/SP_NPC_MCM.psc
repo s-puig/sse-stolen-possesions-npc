@@ -39,6 +39,11 @@ string PAGE_CREATURE = "Creatures"
 
 bool enableMod = true
 
+;Preset
+int presetMode = 1
+string[] presetList
+int presetOID
+
 int function GetVersion()
 	return 1
 endfunction
@@ -49,6 +54,12 @@ Event OnConfigInit()
     Pages[1] = PAGE_HUMANOID
     Pages[2] = PAGE_FACTION
     Pages[3] = PAGE_CREATURE
+
+    presetList = new string[4]
+    presetList[0] = "Vanilla"
+    presetList[1] = "Default"
+    presetList[2] = "Immersive"
+    presetList[3] = "All"
 EndEvent
 
 Event OnPageReset(string pageName)
@@ -58,7 +69,7 @@ Event OnPageReset(string pageName)
         ;Enable mod
         AddToggleOptionST("MOD_ENABLE", "Enable", enableMod, OPTION_FLAG_DISABLED)
         ;Preset selection
-        AddTextOptionST("PRESET_OPTION", "Preset", "Default", OPTION_FLAG_DISABLED)
+        presetOID = AddMenuOption("Preset", presetList[presetMode])
         ;QuickLoot support
         AddHeaderOption("QuickLoot support")
         AddToggleOptionST("QUICKLOOT_ENABLE", "[Experimental] Enable", SP_NPC_QLSupport.GetValueInt() as bool)
@@ -103,15 +114,19 @@ Event OnPageReset(string pageName)
         ;Companions
         AddHeaderOption("The Companions")
         AddToggleOptionST("COMPANION_ENABLE", "Enable", SP_NPC_Companion.GetValueInt())
+        AddToggleOptionST("JOIN_COMPANION_ENABLE", "Autoenable on join", false, OPTION_FLAG_DISABLED)
         ;Mage guild
         AddHeaderOption("The College of Winterhold")
         AddToggleOptionST("COLLEGE_ENABLE", "Enable", SP_NPC_College.GetValueInt())
+        AddToggleOptionST("JOIN_COLLEGE_ENABLE", "Autoenable on join", false, OPTION_FLAG_DISABLED)
         ;Thieves guild
         AddHeaderOption("Thieves Guild")
         AddToggleOptionST("THIEVES_ENABLE", "Enable", SP_NPC_ThievesG.GetValueInt())
+        AddToggleOptionST("JOIN_THIEVES_ENABLE", "Autoenable on join", false, OPTION_FLAG_DISABLED)
         ;Assassin guild
         AddHeaderOption("The Darkbrotherhood")
         AddToggleOptionST("DBROTHERHOOD_ENABLE", "Enable", SP_NPC_DBrotherhood.GetValueInt())
+        AddToggleOptionST("JOIN_DBROTHERHOOD_ENABLE", "Autoenable on join", false, OPTION_FLAG_DISABLED)
         SetCursorPosition(1)
         ;Silver Hand
         AddHeaderOption("Silver Hand")
@@ -125,9 +140,11 @@ Event OnPageReset(string pageName)
         ;DLC Vampires
         AddHeaderOption("Volkihar clan")
         AddToggleOptionST("VOLKIHAR_ENABLE", "Enable", SP_NPC_Volkihar.GetValueInt())
+        AddToggleOptionST("JOIN_VOLkIHAR_ENABLE", "Autoenable on join", false, OPTION_FLAG_DISABLED)
         ;DLC Vampire hunters
         AddHeaderOption("Dawnguard")
         AddToggleOptionST("DAWNGUARD_ENABLE", "Enable", SP_NPC_Dawnguard.GetValueInt())
+        AddToggleOptionST("JOIN_DAWNGUARD_ENABLE", "Autoenable on join", false, OPTION_FLAG_DISABLED)
     ElseIf (pageName == PAGE_CREATURE)
         ;Domestic animals
         AddHeaderOption("Domestic animals")
@@ -177,6 +194,138 @@ State MOD_ENABLE
         SetInfoText("Controls the mod functionality. If you want to uninstall, uncheck and wait for atleast an hour.")
     endEvent
 EndState
+
+Function SetPreset(int option)
+    If (option == 0)
+        SP_NPC_Citizen.SetValueInt(0)
+        SP_NPC_Outlaw.SetValueInt(0)
+        SP_NPC_Outcast.SetValueInt(0)
+        SP_NPC_Undead.SetValueInt(0)
+        SP_NPC_DragonCult.SetValueInt(0)
+        SP_NPC_Daedra.SetValueInt(0)
+        SP_NPC_Predator.SetValueInt(0)
+        SP_NPC_Domestic.SetValueInt(0)
+        SP_NPC_Hunt.SetValueInt(0)
+        SP_NPC_Wild.SetValueInt(0)
+        SP_NPC_Dwarven.SetValueInt(0)
+        SP_NPC_CW.SetValueInt(0)
+        SP_NPC_Companion.SetValueInt(0)
+        SP_NPC_ThievesG.SetValueInt(0)
+        SP_NPC_College.SetValueInt(0)
+        SP_NPC_DBrotherhood.SetValueInt(0)
+        SP_NPC_Thalmor.SetValueInt(0)
+        SP_NPC_SilverHand.SetValueInt(0)
+        SP_NPC_Volkihar.SetValueInt(0)
+        SP_NPC_Dawnguard.SetValueInt(0)
+        SP_NPC_Alikr.SetValueInt(0)
+        SP_NPC_Warlock.SetValueInt(0)
+        SP_NPC_Giant.SetValueInt(0)
+        SP_NPC_Falmer.SetValueInt(0)
+        SP_NPC_Vampire.SetValueInt(0)
+        SP_NPC_Forsworn.SetValueInt(0)
+        SP_NPC_Dragon.SetValueInt(0)
+    ElseIf (option == 1)    
+        SP_NPC_Citizen.SetValueInt(1)
+        SP_NPC_Outlaw.SetValueInt(0)
+        SP_NPC_Outcast.SetValueInt(0)
+        SP_NPC_Undead.SetValueInt(0)
+        SP_NPC_DragonCult.SetValueInt(0)
+        SP_NPC_Daedra.SetValueInt(0)
+        SP_NPC_Predator.SetValueInt(0)
+        SP_NPC_Domestic.SetValueInt(1)
+        SP_NPC_Hunt.SetValueInt(0)
+        SP_NPC_Wild.SetValueInt(0)
+        SP_NPC_Dwarven.SetValueInt(0)
+        SP_NPC_CW.SetValueInt(1)
+        SP_NPC_Companion.SetValueInt(1)
+        SP_NPC_ThievesG.SetValueInt(0)
+        SP_NPC_College.SetValueInt(1)
+        SP_NPC_DBrotherhood.SetValueInt(0)
+        SP_NPC_Thalmor.SetValueInt(1)
+        SP_NPC_SilverHand.SetValueInt(0)
+        SP_NPC_Volkihar.SetValueInt(0)
+        SP_NPC_Dawnguard.SetValueInt(0)
+        SP_NPC_Alikr.SetValueInt(0)
+        SP_NPC_Warlock.SetValueInt(0)
+        SP_NPC_Giant.SetValueInt(0)
+        SP_NPC_Falmer.SetValueInt(0)
+        SP_NPC_Vampire.SetValueInt(0)
+        SP_NPC_Forsworn.SetValueInt(0)
+        SP_NPC_Dragon.SetValueInt(0)
+    ElseIf (option == 2)
+        SP_NPC_Citizen.SetValueInt(1)
+        SP_NPC_Outlaw.SetValueInt(1)
+        SP_NPC_Outcast.SetValueInt(0)
+        SP_NPC_Undead.SetValueInt(1)
+        SP_NPC_DragonCult.SetValueInt(0)
+        SP_NPC_Daedra.SetValueInt(0)
+        SP_NPC_Predator.SetValueInt(0)
+        SP_NPC_Domestic.SetValueInt(1)
+        SP_NPC_Hunt.SetValueInt(1)
+        SP_NPC_Wild.SetValueInt(0)
+        SP_NPC_Dwarven.SetValueInt(1)
+        SP_NPC_CW.SetValueInt(1)
+        SP_NPC_Companion.SetValueInt(1)
+        SP_NPC_ThievesG.SetValueInt(0)
+        SP_NPC_College.SetValueInt(1)
+        SP_NPC_DBrotherhood.SetValueInt(0)
+        SP_NPC_Thalmor.SetValueInt(1)
+        SP_NPC_SilverHand.SetValueInt(0)
+        SP_NPC_Volkihar.SetValueInt(0)
+        SP_NPC_Dawnguard.SetValueInt(1)
+        SP_NPC_Alikr.SetValueInt(0)
+        SP_NPC_Warlock.SetValueInt(0)
+        SP_NPC_Giant.SetValueInt(0)
+        SP_NPC_Falmer.SetValueInt(0)
+        SP_NPC_Vampire.SetValueInt(0)
+        SP_NPC_Forsworn.SetValueInt(0)
+        SP_NPC_Dragon.SetValueInt(0)
+    Elseif (option == 3)
+        SP_NPC_Citizen.SetValueInt(1)
+        SP_NPC_Outlaw.SetValueInt(1)
+        SP_NPC_Outcast.SetValueInt(1)
+        SP_NPC_Undead.SetValueInt(1)
+        SP_NPC_DragonCult.SetValueInt(1)
+        SP_NPC_Daedra.SetValueInt(1)
+        SP_NPC_Predator.SetValueInt(1)
+        SP_NPC_Domestic.SetValueInt(1)
+        SP_NPC_Hunt.SetValueInt(1)
+        SP_NPC_Wild.SetValueInt(1)
+        SP_NPC_Dwarven.SetValueInt(1)
+        SP_NPC_CW.SetValueInt(1)
+        SP_NPC_Companion.SetValueInt(1)
+        SP_NPC_ThievesG.SetValueInt(1)
+        SP_NPC_College.SetValueInt(1)
+        SP_NPC_DBrotherhood.SetValueInt(1)
+        SP_NPC_Thalmor.SetValueInt(1)
+        SP_NPC_SilverHand.SetValueInt(1)
+        SP_NPC_Volkihar.SetValueInt(1)
+        SP_NPC_Dawnguard.SetValueInt(1)
+        SP_NPC_Alikr.SetValueInt(1)
+        SP_NPC_Warlock.SetValueInt(1)
+        SP_NPC_Giant.SetValueInt(1)
+        SP_NPC_Falmer.SetValueInt(1)
+        SP_NPC_Vampire.SetValueInt(1)
+        SP_NPC_Forsworn.SetValueInt(1)
+        SP_NPC_Dragon.SetValueInt(1)
+    EndIf
+EndFunction
+
+Event OnOptionMenuOpen(int option)
+    if (option == presetOID)
+		SetMenuDialogOptions(presetList)
+		SetMenuDialogStartIndex(presetMode)
+		SetMenuDialogDefaultIndex(1)
+	endIf
+EndEvent
+
+event OnOptionMenuAccept(int option, int index)
+	if (option == presetOID)
+        presetMode = index
+		SetMenuOptionValue(presetOID, presetList[presetMode])
+        SetPreset(presetMode)
+	endIf
+endEvent
 
 State QUICKLOOT_ENABLE
     event OnSelectST()
