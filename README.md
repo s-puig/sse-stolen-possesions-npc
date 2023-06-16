@@ -1,5 +1,5 @@
-# Stolen Possesions - the Deceased 
-Stolen Possesions - the Deceased is a Skyrim SE mod.
+# Stolen Possessions - the Deceased 
+Stolen Possessions - the Deceased is a Skyrim SE mod.
 
 > Deceased NPC items are always marked as non-stolen, even if it actually belongs to someone (e.g. horses) or is an illicit murder (e.g. citizens). This might be immersion breaking for some people.
 
@@ -13,52 +13,59 @@ It accomplishes this by copying the items of the deceased into a fake container 
 - [x] QuickLoot Support 
     - [x] Tag stolen in inventory menu
     - [x] Tag stolen in QuickLoot menu
-- [ ] Customizable categories
-    - [x] Civilian
-        * Citizens and Hunters
-    - [x] Outlaw
-        * Bandits, Forsworn, Hagravens, Warlocks,Reavers
-    - [x] Outcast
-        * Vampires, Werewolves, Afflicted, Werebears
-        * Vampire Thrall (?)
-    - [x] Undead
-        * Draugr, Skeleton and Ghosts, Ash Spawn
-    - [x] Dragon cult
-        * Dragons and dragon priests
-    - [x] Daedra
-        * Atronachs and Dremora
-        * Lurkers and Seekers (?)
-        * Ash Guardian (?)
-    - [x] Predator
-        * Wolf, Bear, Sabrecat, Chaurus, Spider, Skeever, Slaughterfish, Ash Hopper
-    - [x] Domestic animals
-        * Cow, Chicken, Dog, Goat, Horse
-    - [x] Wild Game
-        * Mudcrab, Elk, Deer, Horker, Mammoth, Rabbit, Fox
-        Cant find rabbit
-    - [ ] Wild creature
-        * Ice Wraith, Spriggan, Troll, Wisp, Wispmother, Falmer and Giants
-    - [ ] Dwarven automaton
-        * Spider, Sphere and Centurion
-        * ballista (?)
-    - [ ] Factions
-        - [ ] Civil War
-        - [ ] Companions
-        - [ ] Thieves Guild
-        - [ ] Winterhold
-        - [ ] Dark Brotherhood
-        - [ ] Thalmor
-        - [ ] Silver Hand
-        - [ ] Volkihar
-        - [ ] Dawnguard
-        - [ ] Alik'r
+- [x] Customizable categories
+    - [x] Humanoids
+        - [x] Citizens
+            * Citizens and Hunters
+        - [x] Outlaw
+            * Bandits and Reavers
+        - [x] Outcast
+            * Werewolves, Afflicted, Werebears
+        - [x] Undead
+            * Draugr, Skeleton and Ghosts, Ash Spawn
+        - [x] Dragon cult
+            * Dragon priests
+        - [x] Warlocks
+        - [x] Giant
+        - [x] Falmer
+        - [x] Vampire
+            * Vampires and Thralls
+    - [x] Factions
+        - [x] Civil War
+        - [x] Companions
+        - [x] Thieves Guild
+        - [x] Winterhold
+        - [x] Dark Brotherhood
+        - [x] Thalmor
+        - [x] Silver Hand
+        - [x] Volkihar
+        - [x] Dawnguard
+        - [x] Alik'r
+        - [x] Forsworn
+            * Forsworn and Hagravens
+    - [x] Creatures
+        - [x] Predator
+            * Wolf, Bear, Sabrecat, Chaurus, Spider, Skeever, Slaughterfish, Ash Hopper
+        - [x] Domestic animals
+            * Cow, Chicken, Dog, Goat, Horse
+        - [x] Wild Game
+            * Mudcrab, Elk, Deer, Horker, Mammoth, Hare, Fox
+        - [x] Dragon
+        - [x] Daedra
+            * Atronachs and Dremora
+            * Lurkers and Seekers (?)
+            * Ash Guardian (?)
+        - [x] Wild monsters
+            * Ice Wraith, Spriggan, Troll, Wisp, Wispmother
+        - [x] Dwarven automaton
+            * Spider, Sphere Ballista and Centurion
 - [ ] Ruleset
     - [ ] Enable/Disable
     - [ ] Allow friends
     - [ ] Allow followers
     - [ ] Allow members(?)
     - [ ] Allow killed
-- [ ] MCM
+- [x] MCM
 
 ## Alternatives
 

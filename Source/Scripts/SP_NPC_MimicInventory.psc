@@ -5,7 +5,6 @@ In this case, because we want the items to appear with a steal tag, we set this 
 
 import PO3_SKSEFunctions
 
-
 ReferenceAlias Property Alias_DeadBody Auto
 ReferenceAlias Property Alias_Player Auto
 Form Property SP_NPC_Empty Auto
