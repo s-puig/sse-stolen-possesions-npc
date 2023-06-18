@@ -11,6 +11,7 @@ Form Property SP_NPC_Empty Auto
 
 ObjectReference fakeContainer
 ObjectReference deadBody
+bool stopping = false
 
 Function Startup()
     ;Convenience references
@@ -44,6 +45,7 @@ endFunction
 
 ;Return back the quest items to the dead body
 Function Shutdown()
+    stopping = true
     AddInventoryEventFilter(SP_NPC_Empty);
     Form[] questItems = GetQuestItems(fakeContainer)
     int index = 0
@@ -54,6 +56,9 @@ Function Shutdown()
         index += 1
     EndWhile
     RemoveInventoryEventFilter(SP_NPC_Empty)
+    ;This is update is to avoid updating while items are still being processed (Added/Removed). 
+    ;It avoids a duping exploit when the quest stops before removing everything.
+    RegisterForSingleUpdate(0.1)
 EndFunction
 
 ;Items transfered from the player to this fake container are moved to the corpse and a copy is made here to keep them in sync.
@@ -70,4 +75,15 @@ Event OnItemRemoved(Form akBaseItem, int aiItemCount, ObjectReference akItemRefe
     if akDestContainer == Alias_Player.GetReference()
         deadBody.RemoveItem(akBaseItem, aiItemCount, true)
     endIf
+    ;If shutdown has started, start a timer to identify when the last item was processed
+    If (stopping)
+        RegisterForSingleUpdate(0.1)
+    EndIf
+EndEvent
+
+;Consider this update an OnShutdown that starts when the quest is stopping AND we finished processing all items
+Event OnUpdate()
+    GetOwningQuest().Stop()
+    ;Return block activation to default behaviour
+    deadBody.BlockActivation(false)
 EndEvent
