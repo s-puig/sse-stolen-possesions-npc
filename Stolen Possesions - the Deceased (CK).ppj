@@ -5,6 +5,7 @@
     Output="C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\Scripts" 
     Optimize="false" 
     Release="false" 
+    Anonymize="true"
     Final="false">
     <Imports>
         <Import>.\Source\Scripts</Import>
