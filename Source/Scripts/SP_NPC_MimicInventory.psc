@@ -83,7 +83,7 @@ EndEvent
 
 ;Consider this update an OnShutdown that starts when the quest is stopping AND we finished processing all items
 Event OnUpdate()
-    GetOwningQuest().Stop()
     ;Return block activation to default behaviour
     deadBody.BlockActivation(false)
+    GetOwningQuest().Stop()
 EndEvent
